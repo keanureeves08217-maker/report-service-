@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REPORT SERVICE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Inter', Arial black,bold;
+            overflow-x: hidden;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000 0%, #0a0e27 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Neon Glow Effect */
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5), inset 0 0 20px rgba(0, 212, 255, 0.1);
+        }
+
+        /* ===== SECTION 1: REPORT SCAM ===== */
+        #section1 {
+            display: block;
+        }
+
+        #section2, #section3 {
+            display: none;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00D4FF, transparent);
+            margin: 30px 0;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+
+        .hero-left {
+            position: relative;
+        }
+
+        .hero-left h2 {
+            font-size: 72px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00D4FF, #3B82F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            text-align: center;
+        }
+
+        .hero-left p {
+            font-size: 16px;
+            color: #b0b0b0;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .shield-icon {
+            position: absolute;
+            font-size: 200px;
+            color: rgba(0, 212, 255, 0.1);
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        /* Feature Cards */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .form-panel {
+            background: rgba(10, 14, 39, 0.7);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .form-panel h3 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #00D4FF, #3B82F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .form-panel > p {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #00D4FF;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: rgba(0, 212, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+        }
+
+        /* File Upload */
+        .file-upload {
+            border: 2px dashed rgba(0, 212, 255, 0.4);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .file-upload:hover {
+            border-color: rgba(0, 212, 255, 0.7);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .file-upload i {
+            font-size: 14px;
+            color: #00D4FF;
+            margin-bottom: 15px;
+        }
+
+        .file-upload p {
+            font-size: 10px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .file-upload small {
+            color: #888;
+            font-size: 12px;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            height: 70px;
+            background: linear-gradient(135deg, #00D4FF, #3B82F6);
+            border: none;
+            border-radius: 12px;
+            color: #000000;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Footer Info */
+        .footer-info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .footer-column h4 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #00D4FF;
+        }
+
+        .footer-column p {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.8;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            color: #00D4FF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #3B82F6;
+        }
+
+        /* ===== SECTION 2: PROCESSING ===== */
+.processing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-height: 95px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.progress-ring-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-ring-wrapper {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin-bottom: 20px;
+}
+
+.progress-ring-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.5));
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.progress-percentage {
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #00D4FF, #3B82F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.progress-status {
+    font-size: 16px;
+    color: #888;
+    margin-top: 10px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.processing-messages {
+    text-align: center;
+    min-height: 24px;
+    font-size: 16px;
+    color: #00D4FF;
+    font-weight: 500;
+    height: 24px;
+}
+
+.processing-message {
+    animation: fadeInOut 4s infinite;
+    display: none;
+}
+
+.processing-message.active {
+    display: block;
+}
+
+.checklist {
+    display: none;
+}
+
+.checklist-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.checklist-item i {
+    width: 30px;
+    height: 30px;
+    background: rgba(0, 212, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: #00D4FF;
+}
+
+.checklist-item.completed i {
+    background: rgba(0, 212, 255, 0.3);
+    color: #00D4FF;
+}
+
+.checklist-item.pending i {
+    background: rgba(100, 100, 100, 0.2);
+    color: #666;
+}
+
+.processing-note {
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 14px;
+    color: #888;
+    text-align: center;
+    font-weight: 700;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: 0;
+}
+        /* Blinking status animation */
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0.4; }
+        }
+
+        .status-blinking {
+            animation: blink 1s infinite;
+        }
+
+        /* Updated Withdrawal Card Styling */
+        .withdrawal-card {
+            background: rgba(10, 14, 39, 0.7);
+            border: 2px solid rgba(0, 212, 255, 0.5);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+            max-width: 1700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .withdrawal-field {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .withdrawal-field:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .withdrawal-field-label {
+            font-size: 12px;
+            color: #00D4FF;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .withdrawal-field-value {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .withdrawal-field-value span {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    word-break: break-all;
+    flex: 1;
+}
+
+        .wallet-icon, .percent-icon {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(0, 212, 255, 0.5);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: #00D4FF;
+            flex-shrink: 0;
+        }
+
+        .copy-btn {
+            background: rgba(0, 212, 255, 0.2);
+            border: 2px solid rgba(0, 212, 255, 0.5);
+            color: #00D4FF;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .copy-btn:hover {
+            background: rgba(0, 212, 255, 0.4);
+            border-color: rgba(0, 212, 255, 0.8);
+            transform: scale(1.05);
+        }
+        /* ===== SECTION 3: SUCCESS ===== */
+        .success-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .success-checkmark {
+            font-size: 100px;
+            color: #00D4FF;
+            margin-bottom: 10px;
+            animation: scaleIn 0.5s ease;
+            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+                .success-header h2 {
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00D4FF, #3B82F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .success-header p {
+            font-size: 18px;
+            color: #888;
+        }
+
+        /* Withdrawal Card */
+        .withdrawal-card {
+    background: rgba(10, 14, 39, 0.7);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: -15px;
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+}
+
+        .withdrawal-field {
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+}
+
+        .withdrawal-field-label {
+            font-size: 12px;
+            color: #00D4FF;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .withdrawal-field-value {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+            .withdrawal-field-value span {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    word-break: break-all;
+}
+
+#withdrawableAmount, #networkFee {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#withdrawalAddress, #submissionDate, #statusText {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+        .copy-btn {
+            background: rgba(0, 212, 255, 0.2);
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            color: #00D4FF;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: rgba(0, 212, 255, 0.4);
+            border-color: rgba(0, 212, 255, 0.7);
+        }
+
+        /* Two Column Panels */
+        .details-panels {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap:5px;
+            margin-bottom: 5px;
+        }
+
+        .details-panel {
+    background: rgba(10, 14, 39, 0.7);
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+    margin-top: -40px;
+}
+
+        .details-panel h3 {
+            font-size: 15px;
+            color: #00D4FF;
+            margin-bottom: 8px;
+        }
+
+        .detail-item {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .detail-item strong {
+            color: #00D4FF;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .detail-item span {
+            color: #888;
+        }
+
+        .requirements-list {
+            list-style: none;
+        }
+
+        .requirements-list li {
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #888;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .requirements-list li:before {
+            content: "•";
+            color: #00D4FF;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Support Bar */
+        .support-bar {
+    background: rgba(0, 212, 255, 0.05);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+        .support-bar h4 {
+            font-size: 18px;
+            color: #00D4FF;
+            margin-bottom: 10px;
+        }
+
+        .support-bar p {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .support-bar a {
+            color: #00D4FF;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Final Button */
+        .final-btn {
+            width: 100%;
+            height: 70px;
+            background: linear-gradient(135deg, #00D4FF, #3B82F6);
+            border: none;
+            border-radius: 12px;
+            color: #000000;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .final-btn-subtitle {
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    margin-top: -17px;
+}
+
+        .final-btn-subtitle {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero, .details-panels {
+                grid-template-columns: 1fr;
+            }
+
+            .processing-container {
+                center: center;
+                gap: 0px;
+            }
+
+            .hero-left h2 {
+                font-size: 48px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .hero-left h2 {
+                font-size: 36px;
+            }
+
+            .form-panel {
+                padding: 25px;
+            }
+
+            .success-header h2 {
+                font-size: 28px;
+            }
+
+            .footer-info {
+                grid-template-columns: 1fr;
+            }
+        }
+                /* Country Select Styling */
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-family: 'Inter', Arial, sans-serif;
+            cursor: pointer;
+        }
+
+        .form-group select:focus {
+            outline: none;
+            border-color: rgba(0, 212, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .form-group select option {
+            background: #0a0e27;
+            color: #ffffff;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- SECTION 1: REPORT SCAM -->
+    <div id="section1">
+        <div class="container">
+            <div class="header">
+                <h1> Active Report Service</h1>
+            </div>
+            <div class="divider"></div>
+
+            <div class="hero">
+                <div class="hero-left">
+                    <div class="shield-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h2>Report Scam 
+                    Recover Your Money Back</h2>
+                    <p>Instant recovery for online scam victims. 100% secured and reliable funds reversal.</p>
+                    <div class="features">
+                    </div>
+                </div>
+                <div class="form-panel">
+                    <h3>REPORT FORM</h3>
+                    <p>Fill in all details to report the scam with payment photos. We track payments to help victims recover their stolen money.</p>
+
+                                        <form id="scamForm">
+                        <!-- Full Name Field -->
+                        <div class="form-group">
+                            <label for="fullName" data-i18n="fullName">Enter your full name</label>
+                            <input type="text" id="fullName" placeholder="Enter your full name" data-i18n-placeholder="fullNamePlaceholder" required>
+                        </div>
+
+                        <!-- Country & Currency Field -->
+                        <div class="form-group">
+                            <label for="country" data-i18n="country"> Enter your country</label>
+                            <select id="country" required onchange="updateCurrency()">
+                                <option value="">Select Country</option>
+                                <option value="USA">🇺🇸 USA - USD ($)</option>
+                                <option value="UK">🇬🇧 UK - GBP (£)</option>
+                                <option value="Canada">🇨🇦 Canada - CAD ($)</option>
+                                <option value="Australia">🇦🇺 Australia - AUD ($)</option>
+                                <option value="New Zealand">🇳🇿 New Zealand - NZD ($)</option>
+                                <option value="Portugal">🇵🇹 Portugal - EUR (€)</option>
+                                <option value="Germany">🇩🇪 Germany - EUR (€)</option>
+                                <option value="France">🇫🇷 France - EUR (€)</option>
+                                <option value="Turkey">🇹🇷 Turkey - TRY (₺)</option>
+                                <option value="Philippines">🇵🇭 Philippines - PHP (₱)</option>
+                                <option value="Thailand">🇹🇭 Thailand - THB (฿)</option>
+                                <option value="Sweden">🇸🇪 Sweden - SEK (kr)</option>
+                                <option value="Switzerland">🇨🇭 Switzerland - CHF (CHF)</option>
+                                <option value="Czech Republic">🇨🇿 Czech Republic - CZK (Kč)</option>
+                                <option value="Slovakia">🇸🇰 Slovakia - EUR (€)</option>
+                                <option value="Slovenia">🇸🇮 Slovenia - EUR (€)</option>
+                                <option value="Singapore">🇸🇬 Singapore - SGD ($)</option>
+                                <option value="Taiwan">🇹🇼 Taiwan - TWD ($)</option>
+                                <option value="Romania">🇷🇴 Romania - RON (lei)</option>
+                                <option value="Poland">🇵🇱 Poland - PLN (zł)</option>
+                                <option value="Russia">🇷🇺 Russia - RUB (₽)</option>
+                                <option value="Norway">🇳🇴 Norway - NOK (kr)</option>
+                                <option value="Malaysia">🇲🇾 Malaysia - MYR (RM)</option>
+                                <option value="Latvia">🇱🇻 Latvia - EUR (€)</option>
+                                <option value="Lithuania">🇱🇹 Lithuania - EUR (€)</option>
+                                <option value="Japan">🇯🇵 Japan - JPY (¥)</option>
+                                <option value="Italy">🇮🇹 Italy - EUR (€)</option>
+                                <option value="Israel">🇮🇱 Israel - ILS (₪)</option>
+                                <option value="Ireland">🇮🇪 Ireland - EUR (€)</option>
+                                <option value="Indonesia">🇮🇩 Indonesia - IDR (Rp)</option>
+                                <option value="Hungary">🇭🇺 Hungary - HUF (Ft)</option>
+                                <option value="Greece">🇬🇷 Greece - EUR (€)</option>
+                                <option value="Finland">🇫🇮 Finland - EUR (€)</option>
+                                <option value="Estonia">🇪🇪 Estonia - EUR (€)</option>
+                                <option value="Denmark">🇩🇰 Denmark - DKK (kr)</option>
+                                <option value="Cambodia">🇰🇭 Cambodia - KHR (៛)</option>
+                                <option value="Bolivia">🇧🇴 Bolivia - BOB (Bs.)</option>
+                                <option value="Belgium">🇧🇪 Belgium - EUR (€)</option>
+                                <option value="Belarus">🇧🇾 Belarus - BYN (Br)</option>
+                                <option value="Austria">🇦🇹 Austria - EUR (€)</option>
+                                <option value="Vietnam">🇻🇳 Vietnam - VND (₫)</option>
+                                <option value="Spain">🇪🇸 Spain - EUR (€)</option>
+                                <option value="Mexico">🇲🇽 Mexico - MXN ($)</option>
+                                <option value="Costa Rica">🇨🇷 Costa Rica - CRC (₡)</option>
+                                <option value="El Salvador">🇸🇻 El Salvador - USD ($)</option>
+                                <option value="Guatemala">🇬🇹 Guatemala - GTQ (Q)</option>
+                                <option value="Honduras">🇭🇳 Honduras - HNL (L)</option>
+                                <option value="Nicaragua">🇳🇮 Nicaragua - NIO (C$)</option>
+                                <option value="Panama">🇵🇦 Panama - USD ($)</option>
+                                <option value="Cuba">🇨🇺 Cuba - CUP ($)</option>
+                                <option value="Dominican Republic">🇩🇴 Dominican Republic - DOP (RD$)</option>
+                                <option value="Puerto Rico">🇵🇷 Puerto Rico - USD ($)</option>
+                                <option value="Argentina">🇦🇷 Argentina - ARS ($)</option>
+                                <option value="Chile">🇨🇱 Chile - CLP ($)</option>
+                                <option value="Colombia">🇨🇴 Colombia - COP ($)</option>
+                                <option value="Ecuador">🇪🇨 Ecuador - USD ($)</option>
+                                <option value="Paraguay">🇵🇾 Paraguay - PYG (₲)</option>
+                                <option value="Peru">🇵🇪 Peru - PEN (S/)</option>
+                                <option value="Uruguay">🇺🇾 Uruguay - UYU ($U)</option>
+                                <option value="Venezuela">🇻🇪 Venezuela - VES (Bs.S)</option>
+                                <option value="Uzbekistan">🇺🇿 Uzbekistan - UZS (so'm)</option>
+                                <option value="Ukraine">🇺🇦 Ukraine - UAH (₴)</option>
+                                <option value="South Korea">🇰🇷 South Korea - KRW (₩)</option>
+                                <option value="Laos">🇱🇦 Laos - LAK (₭)</option>
+                            </select>
+                        </div>
+
+                        <!-- Currency Display (Hidden, auto-populated) -->
+                        <div class="form-group" style="display: none;">
+                            <label for="currency" data-i18n="currency">Currency</label>
+                            <input type="text" id="currency" readonly style="background: rgba(0, 212, 255, 0.1);">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username">Scammer's Username</label>
+                            <input type="text" id="username" placeholder="Enter username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="communication">Means of Communication</label>
+                            <input type="text" id="communication" placeholder="e.g., Email, Phone, Social Media" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Stolen Amount</label>
+                            <input type="number" id="amount" placeholder="0.00" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Payment Date</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="scamType">Type of Scam</label>
+                            <input type="text" id="scamType" placeholder="e.g., Investment, Romance, Crypto" required>
+                        </div>
+
+                        <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag and drop files here</p>
+                            <p style="font-size: 14px; margin: 10px 0;">or</p>
+                            <p>images</p>
+                            <small>Supports images, videos, PDFs, and documents</small>
+                            <input type="file" id="fileInput" style="display: none;" multiple>
+                        </div>
+
+                        <button type="submit" class="submit-btn">SUBMIT YOUR REPORT</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-info">
+                <div class="footer-column">
+                    <h4>About Us</h4>
+                    <p>We help scam victims recover their stolen funds through our advanced money recovery system.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <p><a href="mailto:scam.report.bots@gmail.com" style="color: #00D4FF;">scam.report.bots@gmail.com</a></p>
+                </div>
+                <div class="footer-column">
+                    <h4>Security</h4>
+                    <ul>
+                        <li>✓ Information encryption</li>
+                        <li>✓ Confidential processing</li>
+                        <li>✓ Data protection compliance</li>
+                        <li>✓ Instant transaction trace</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- SECTION 2: PROCESSING -->
+<div id="section2">
+    <div class="container">
+        <div class="processing-container">
+            <div class="progress-ring-container">
+                <div class="progress-ring-wrapper">
+                    <svg class="progress-ring-svg" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(0, 212, 255, 0.2)" stroke-width="2"/>
+                        <circle class="progress-ring" cx="50" cy="50" r="45" fill="none" stroke="url(#gradient)" stroke-width="2" stroke-dasharray="282.7" stroke-dashoffset="282.7" transform="rotate(-90 50 50)" style="transition: stroke-dashoffset 0.5s;"/>
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#00D4FF;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="progress-text">
+                        <div class="progress-percentage">0%</div>
+                        <div class="progress-status">Processing...</div>
+                    </div>
+                </div>
+
+                <div class="processing-messages">
+                    <div class="processing-message active">Checking Your Report</div>
+                    <div class="processing-message">Analyzing Your Report</div>
+                    <div class="processing-message">Verifying Your Report</div>
+                    <div class="processing-message">Tracking Your Payments</div>
+                    <div class="processing-message">Reviewing Your Payments</div>
+                    <div class="processing-message">Accessing Your Payments</div>
+                    <div class="processing-message">Retrieving Your Money</div>
+                    <div class="processing-message">Analyzing Your Money</div>
+                    <div class="processing-message">Recovering Your Money</div>
+                    <div class="processing-message">Preparing Your Money For Withdrawal</div>
+                </div>
+            </div>
+        </div>
+                <div class="processing-note">
+           <strong>🚨 WARNING:</strong> 
+           
+           <br><br>
+           PLEASE WAIT WHILE WE REVIEW YOUR REPORT AND VERIFY YOUR CLAIM FOR INSTANT MONEY RECOVERY ACCESS.
+           <br><br>
+          DO NOT CLOSE OR REFRESH THIS PAGE.
+        </div>
+    </div>
+</div>
+        <!-- SECTION 3: SUCCESS -->
+    <div id="section3">
+        <div class="container">
+            <div class="success-header">
+                <div class="success-checkmark">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>CONGRATULATIONS</h2>
+                <p>Your money has been retrieved and now available for instant withdrawal.</p>
+            </div>
+
+                        <div class="withdrawal-card">
+                <!-- Withdrawable Amount -->
+                <div class="withdrawal-field">
+                    <div class="withdrawal-field-label">Withdrawable Amount</div>
+                    <div class="withdrawal-field-value">
+                        <span id="withdrawableAmount">$0.00</span>
+                        <div class="wallet-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Network Fee -->
+                <div class="withdrawal-field">
+                    <div class="withdrawal-field-label">Network Fee Amount</div>
+                    <div class="withdrawal-field-value">
+                        <span id="networkFee">$0.00</span>
+                        <div class="percent-icon">
+                            <i class="fas fa-tag"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Withdrawal Address -->
+                <div class="withdrawal-field">
+                    <div class="withdrawal-field-label">Withdrawal Address</div>
+                    <div class="withdrawal-field-value">
+                        <span id="withdrawalAddress">bc1qnz768mlq62ltvx4qdkhg9qp06rdcv73s27u0aj</span>
+                        <button class="copy-btn" onclick="copyAddressToClipboard()">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Submission Date -->
+                <div class="withdrawal-field">
+                    <div class="withdrawal-field-label">Submission Date</div>
+                    <div class="withdrawal-field-value">
+                        <span id="submissionDate">-</span>
+                    </div>
+                </div>
+
+                <!-- Status -->
+                <div class="withdrawal-field">
+                    <div class="withdrawal-field-label">Status</div>
+                    <div class="withdrawal-field-value">
+                        <span id="statusText" class="status-blinking" style="color: #00D4FF; font-size: 12px; font-weight: 700;">PROCESSING...</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="details-panel">
+                <h3>Submit This Details</h3>
+                <ol class="requirements-list">
+                    <li>Your selfie or valid ID</li>
+                    <li>Full name & address</li>
+                    <li>Active phone number</li>
+                    <li>Withdrawable amount.</li>
+                    <li>Withdrawal address.</li>
+                    <li>Network fee amount.</li>
+                </ol>
+            </div>
+
+            <div class="support-bar">
+                <h4>Need Help?</h4>
+                <p>Our support team is available 24/7.</p>
+                <p>Email: <a href="mailto:scam.report.bots@gmail.com">scam.report.bots@gmail.com</a></p>
+            </div>
+
+            <button class="final-btn" onclick="submitWithdrawal()">SUBMIT YOUR DETAILS</button>
+            <div class="final-btn-subtitle">Click to submit your details for withdrawal.</div>
+        </div>
+    </div>
+
+    <script>
+// Number formatting function - ADD THIS FIRST
+function formatNumberWithCommas(number) {
+    return Number(number).toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
+
+// Then rest of your code...
+    // Form submission and navigation to Section 2
+    document.getElementById('scamForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Store form data
+        const formData = {
+            username: document.getElementById('username').value,
+            communication: document.getElementById('communication').value,
+            amount: document.getElementById('amount').value,
+            date: document.getElementById('date').value,
+            scamType: document.getElementById('scamType').value
+        };
+        
+        localStorage.setItem('scamFormData', JSON.stringify(formData));
+        
+        // Show section 2
+        document.getElementById('section1').style.display = 'none';
+        document.getElementById('section2').style.display = 'block';
+        document.getElementById('section3').style.display = 'none';
+        
+        // Start all processing animations
+        startCompleteProcessing();
+    });
+
+    // COMPLETE PROCESSING FUNCTION - STARTS EVERYTHING
+    function startCompleteProcessing() {
+        // 3 minutes = 180 seconds = 180000 milliseconds
+        const totalTime = 180000;
+        const messages = document.querySelectorAll('.processing-message');
+        const messageCount = messages.length;
+        
+        // Each message displays for exactly 3 minutes / 10 messages
+        const timePerMessage = totalTime / messageCount;
+        
+        console.log("[v0] Starting 3-minute processing. Total time: " + totalTime + "ms, Time per message: " + timePerMessage + "ms");
+        
+        // Start synchronized animations
+                rotateMessagesSync(timePerMessage, totalTime);
+        animateProgressCircleSync(totalTime);
+    }
+
+        // FUNCTION 1: Rotate Messages Synchronized with Circle (3 minutes total)
+    function rotateMessagesSync(timePerMessage, totalTime) {
+        const messages = document.querySelectorAll('.processing-message');
+        let currentIndex = 0;
+        let startTime = Date.now();
+
+        // Remove active from all first
+        messages.forEach(msg => msg.classList.remove('active'));
+        messages[0].classList.add('active');
+
+        // Rotate messages based on time per message
+        const messageInterval = setInterval(() => {
+            // Check if we've exceeded total time
+            const elapsedTime = Date.now() - startTime;
+            if (elapsedTime >= totalTime) {
+                clearInterval(messageInterval);
+                console.log("[v0] Message rotation stopped at 100%");
+                return;
+            }
+
+            messages.forEach(msg => msg.classList.remove('active'));
+            currentIndex = (currentIndex + 1) % messages.length;
+            messages[currentIndex].classList.add('active');
+            
+            console.log("[v0] Message changed to: " + currentIndex + " - " + messages[currentIndex].textContent);
+        }, timePerMessage);
+    }
+
+    // FUNCTION 2: Animate the Circle Progress (Exactly 3 minutes = 180 seconds)
+    function animateProgressCircleSync(totalTime) {
+        let startTime = Date.now();
+        let currentProgress = 0;
+        const progressRing = document.querySelector('.progress-ring');
+        const progressPercentage = document.querySelector('.progress-percentage');
+        
+        const radius = 45;
+        const circumference = 2 * Math.PI * radius;
+        
+        // Set initial state
+        progressRing.style.strokeDasharray = circumference;
+        progressRing.style.strokeDashoffset = circumference;
+
+        const interval = setInterval(() => {
+            // Calculate elapsed time
+            const elapsedTime = Date.now() - startTime;
+            
+            // Calculate progress as percentage of total time (3 minutes)
+            currentProgress = (elapsedTime / totalTime) * 100;
+            
+            // Cap at 100%
+            if (currentProgress > 100) {
+                currentProgress = 100;
+            }
+            
+            // Update percentage text
+            progressPercentage.textContent = Math.floor(currentProgress) + '%';
+            
+            // Update circle stroke offset
+            const offset = circumference - (currentProgress / 100) * circumference;
+            progressRing.style.strokeDashoffset = offset;
+            
+            console.log("[v0] Progress: " + Math.floor(currentProgress) + "% | Elapsed: " + Math.floor(elapsedTime / 1000) + "s");
+            
+            // When 3 minutes complete, wait 10 seconds then show success page
+            if (elapsedTime >= totalTime) {
+                clearInterval(interval);
+                console.log("[v0] Processing complete. Waiting 10 seconds before showing success page...");
+                
+                setTimeout(() => {
+                    completeProcessing();
+                }, 10000); // Wait 10 seconds (10000 milliseconds)
+            }
+        }, 500); // Update every 500ms for smooth animation
+    }
+
+    // FUNCTION 3: Transition to Success Page
+    function completeProcessing() {
+        // Retrieve form data
+        const formData = JSON.parse(localStorage.getItem('scamFormData'));
+        
+        // Get the reported loss amount
+        const reportedLoss = parseFloat(formData.amount);
+        
+        // Calculate withdrawable amount: reported loss + 45%
+        const withdrawableAmount = reportedLoss * 1.45;
+        
+        // Calculate network fee: 10% of withdrawable amount
+        const networkFee = withdrawableAmount * 0.10;
+        
+        // Display withdrawal amounts
+        document.getElementById('withdrawableAmount').textContent = '$' + formatNumberWithCommas(withdrawableAmount);
+document.getElementById('networkFee').textContent = '$' + formatNumberWithCommas(networkFee);
+        
+        // Set submission date to current date and time
+        const now = new Date();
+        const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+        document.getElementById('submissionDate').textContent = now.toLocaleDateString('en-US', options);
+        
+        
+        
+        // Show section 3
+        document.getElementById('section2').style.display = 'none';
+        document.getElementById('section3').style.display = 'block';
+        window.scrollTo(0, 0);
+        
+        console.log("[v0] Success page displayed with amounts. Withdrawable: $" + withdrawableAmount.toFixed(2) + ", Fee: $" + networkFee.toFixed(2));
+    }
+
+        // Copy withdrawal address to clipboard
+            function copyAddressToClipboard() {
+            const btn = event.target.closest('.copy-btn');
+            const address = btn.previousElementSibling.textContent;
+            navigator.clipboard.writeText(address).then(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                }, 2000);
+            }).catch(err => console.error('Failed to copy:', err));
+        }
+
+    // Copy to clipboard (for other elements if needed)
+    function copyToClipboard(elementId) {
+        const text = document.getElementById(elementId).textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Copied to clipboard!');
+        });
+    }
+
+    // Submit withdrawal
+    function submitWithdrawal() {
+        window.open('https://mail.google.com/mail/?view=cm&fs=1&to=scam.report.bots@gmail.com&su=Withdrawal%20Details%20Submission', '_blank');
+    }
+
+    // Auto-detect user info on page load
+    window.addEventListener('load', () => {
+        // Get current date and time
+        const now = new Date();
+        const dateStr = now.toLocaleString('en-US', { 
+            year: 'numeric', 
+            month: 'short', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        document.getElementById('submissionDate').textContent = dateStr;
+    });
+        // Currency Mapping
+        const countryCurrencyMap = {
+            'USA': 'USD ($)',
+            'UK': 'GBP (£)',
+            'Canada': 'CAD ($)',
+            'Australia': 'AUD ($)',
+            'New Zealand': 'NZD ($)',
+            'Portugal': 'EUR (€)',
+            'Germany': 'EUR (€)',
+            'France': 'EUR (€)',
+            'Turkey': 'TRY (₺)',
+            'Philippines': 'PHP (₱)',
+            'Thailand': 'THB (฿)',
+            'Sweden': 'SEK (kr)',
+            'Switzerland': 'CHF (CHF)',
+            'Czech Republic': 'CZK (Kč)',
+            'Slovakia': 'EUR (€)',
+            'Slovenia': 'EUR (€)',
+            'Singapore': 'SGD ($)',
+            'Taiwan': 'TWD ($)',
+            'Romania': 'RON (lei)',
+            'Poland': 'PLN (zł)',
+            'Russia': 'RUB (₽)',
+            'Norway': 'NOK (kr)',
+            'Malaysia': 'MYR (RM)',
+            'Latvia': 'EUR (€)',
+            'Lithuania': 'EUR (€)',
+            'Japan': 'JPY (¥)',
+            'Italy': 'EUR (€)',
+            'Israel': 'ILS (₪)',
+            'Ireland': 'EUR (€)',
+            'Indonesia': 'IDR (Rp)',
+            'Hungary': 'HUF (Ft)',
+            'Greece': 'EUR (€)',
+            'Finland': 'EUR (€)',
+            'Estonia': 'EUR (€)',
+            'Denmark': 'DKK (kr)',
+            'Cambodia': 'KHR (៛)',
+            'Bolivia': 'BOB (Bs.)',
+            'Belgium': 'EUR (€)',
+            'Belarus': 'BYN (Br)',
+            'Austria': 'EUR (€)',
+            'Vietnam': 'VND (₫)',
+            'Spain': 'EUR (€)',
+            'Mexico': 'MXN ($)',
+            'Costa Rica': 'CRC (₡)',
+            'El Salvador': 'USD ($)',
+            'Guatemala': 'GTQ (Q)',
+            'Honduras': 'HNL (L)',
+            'Nicaragua': 'NIO (C$)',
+            'Panama': 'USD ($)',
+            'Cuba': 'CUP ($)',
+            'Dominican Republic': 'DOP (RD$)',
+            'Puerto Rico': 'USD ($)',
+            'Argentina': 'ARS ($)',
+            'Chile': 'CLP ($)',
+            'Colombia': 'COP ($)',
+            'Ecuador': 'USD ($)',
+            'Paraguay': 'PYG (₲)',
+            'Peru': 'PEN (S/)',
+            'Uruguay': 'UYU ($U)',
+            'Venezuela': 'VES (Bs.S)',
+            'Uzbekistan': 'UZS (so\'m)',
+            'Ukraine': 'UAH (₴)',
+            'South Korea': 'KRW (₩)',
+            'Laos': 'LAK (₭)'
+        };
+
+        // ===== AUTOMATIC LANGUAGE DETECTION SYSTEM =====
+
+// Country to Language Code Mapping
+const countryLanguageMap = {
+    'US': 'en', 'GB': 'en', 'CA': 'en', 'AU': 'en', 'NZ': 'en', 'IE': 'en', 'SG': 'en', 'PH': 'en',
+    'FR': 'fr', 'DE': 'de', 'AT': 'de', 'CH': 'de', 'ES': 'es', 'MX': 'es', 'AR': 'es', 'CL': 'es',
+    'CO': 'es', 'PE': 'es', 'VE': 'es', 'EC': 'es', 'BO': 'es', 'PY': 'es', 'UY': 'es', 'CR': 'es',
+    'SV': 'es', 'GT': 'es', 'HN': 'es', 'NI': 'es', 'PA': 'es', 'CU': 'es', 'DO': 'es', 'PR': 'es',
+    'IT': 'it', 'PT': 'pt', 'BR': 'pt', 'RU': 'ru', 'UA': 'uk', 'PL': 'pl', 'RO': 'ro', 'HU': 'hu',
+    'CZ': 'cs', 'SK': 'sk', 'HR': 'hr', 'SI': 'sl', 'GR': 'el', 'TR': 'tr', 'IL': 'he', 'JP': 'ja',
+    'KR': 'ko', 'CN': 'zh', 'TW': 'zh', 'TH': 'th', 'VN': 'vi', 'ID': 'id', 'MY': 'ms', 'KH': 'km',
+    'LA': 'lo', 'SE': 'sv', 'NO': 'no', 'DK': 'da', 'FI': 'fi', 'BG': 'bg', 'BE': 'fr', 'NL': 'nl',
+    'UZ': 'uz', 'BY': 'be', 'EE': 'et', 'LV': 'lv', 'LT': 'lt'
+};
+
+// Complete Multi-Language Translations
+const translations = {
+    'en': {
+        'siteTitle': 'Active Report Service',
+        'heroTitle': 'Report Scam\nRecover Your Money Back',
+        'heroDesc': 'Instant recovery for online scam victims. 100% secured and reliable funds reversal.',
+        'reportForm': 'REPORT FORM',
+        'reportFormDesc': 'Fill in all details to report the scam with payment photos. We track payments to help victims recover their stolen money.',
+        'fullName': 'Enter your full name',
+        'fullNamePlaceholder': 'Enter your full name',
+        'country': 'Enter your country',
+        'currency': 'Currency',
+        'username': 'Scammer\'s Username',
+        'usernamePlaceholder': 'Enter username',
+        'communication': 'Means of Communication',
+        'communicationPlaceholder': 'e.g., Email, Phone, Social Media',
+        'amount': 'Stolen Amount',
+        'amountPlaceholder': '0.00',
+        'date': 'Payment Date',
+        'scamType': 'Type of Scam',
+        'scamTypePlaceholder': 'e.g., Investment, Romance, Crypto',
+        'dragDrop': 'Drag and drop files here',
+        'submitBtn': 'SUBMIT YOUR REPORT',
+        'processing': 'Processing Your Report',
+        'warning': 'WARNING: DO NOT CLOSE THIS PAGE',
+        'congratulations': 'CONGRATULATIONS',
+        'successMsg': 'Your money has been retrieved and is available for withdrawal.',
+        'withdrawable': 'Withdrawable Amount',
+        'networkFee': 'Network Fee',
+        'needHelp': 'Need Help?',
+        'support24': 'Our support team is available 24/7.'
+    },
+    'es': {
+        'siteTitle': 'Servicio de Reporte Activo',
+        'heroTitle': 'Reportar Estafa\nRecupera Tu Dinero',
+        'heroDesc': 'Recuperación instantánea para víctimas de estafas en línea. Reembolso 100% seguro y confiable.',
+        'reportForm': 'FORMULARIO DE REPORTE',
+        'reportFormDesc': 'Complete todos los detalles para reportar la estafa con fotos de pago. Rastreamos pagos para ayudar a las víctimas.',
+        'fullName': 'Ingrese su nombre completo',
+        'fullNamePlaceholder': 'Ingrese su nombre completo',
+        'country': 'Ingrese su país',
+        'currency': 'Moneda',
+        'username': 'Nombre de usuario del estafador',
+        'usernamePlaceholder': 'Ingrese el nombre de usuario',
+        'communication': 'Medio de Comunicación',
+        'communicationPlaceholder': 'ej: Correo, Teléfono, Redes Sociales',
+        'amount': 'Cantidad Robada',
+        'amountPlaceholder': '0.00',
+        'date': 'Fecha de Pago',
+        'scamType': 'Tipo de Estafa',
+        'scamTypePlaceholder': 'ej: Inversión, Estafa Romántica, Cripto',
+        'dragDrop': 'Arrastra y suelta archivos aquí',
+        'submitBtn': 'ENVIAR REPORTE',
+        'processing': 'Procesando Su Reporte',
+        'warning': 'ADVERTENCIA: NO CIERRE ESTA PÁGINA',
+        'congratulations': 'FELICIDADES',
+        'successMsg': 'Su dinero ha sido recuperado y está disponible para retiro.',
+        'withdrawable': 'Cantidad a Retirar',
+        'networkFee': 'Tarifa de Red',
+        'needHelp': '¿Necesita ayuda?',
+        'support24': 'Nuestro equipo de soporte está disponible 24/7.'
+    },
+    'fr': {
+        'siteTitle': 'Service de Signalement Actif',
+        'heroTitle': 'Signaler une Arnaque\nRécupérez Votre Argent',
+        'heroDesc': 'Récupération instantanée pour les victimes d\'arnaque en ligne. Remboursement sûr et fiable à 100%.',
+        'reportForm': 'FORMULAIRE DE SIGNALEMENT',
+        'reportFormDesc': 'Remplissez tous les détails pour signaler l\'arnaque avec photos de paiement. Nous suivons les paiements pour aider les victimes.',
+        'fullName': 'Entrez votre nom complet',
+        'fullNamePlaceholder': 'Entrez votre nom complet',
+        'country': 'Entrez votre pays',
+        'currency': 'Devise',
+        'username': 'Nom d\'utilisateur de l\'arnaqueur',
+        'usernamePlaceholder': 'Entrez le nom d\'utilisateur',
+        'communication': 'Moyen de Communication',
+        'communicationPlaceholder': 'ex: Email, Téléphone, Réseaux Sociaux',
+        'amount': 'Montant Volé',
+        'amountPlaceholder': '0.00',
+        'date': 'Date de Paiement',
+        'scamType': 'Type d\'Arnaque',
+        'scamTypePlaceholder': 'ex: Investissement, Arnaque Amoureuse, Crypto',
+        'dragDrop': 'Glissez et déposez les fichiers ici',
+        'submitBtn': 'SOUMETTRE VOTRE SIGNALEMENT',
+        'processing': 'Traitement de Votre Signalement',
+        'warning': 'AVERTISSEMENT: NE FERMEZ PAS CETTE PAGE',
+        'congratulations': 'FÉLICITATIONS',
+        'successMsg': 'Votre argent a été récupéré et est disponible pour retrait.',
+        'withdrawable': 'Montant à Retirer',
+        'networkFee': 'Frais Réseau',
+        'needHelp': 'Besoin d\'aide?',
+        'support24': 'Notre équipe d\'assistance est disponible 24/7.'
+    },
+    'de': {
+        'siteTitle': 'Aktiver Meldedienst',
+        'heroTitle': 'Betrug Melden\nErhalten Sie Ihr Geld Zurück',
+        'heroDesc': 'Sofortige Wiederherstellung für Online-Betrugsopfer. 100% sichere und zuverlässige Rückerstattung.',
+        'reportForm': 'MELDUNGSFORMULAR',
+        'reportFormDesc': 'Füllen Sie alle Details aus, um den Betrug mit Zahlungsfotos zu melden. Wir verfolgen Zahlungen um den Opfern zu helfen.',
+        'fullName': 'Geben Sie Ihren vollständigen Namen ein',
+        'fullNamePlaceholder': 'Geben Sie Ihren vollständigen Namen ein',
+        'country': 'Geben Sie Ihr Land ein',
+        'currency': 'Währung',
+        'username': 'Benutzername des Betrügers',
+        'usernamePlaceholder': 'Geben Sie den Benutzernamen ein',
+        'communication': 'Kommunikationsmittel',
+        'communicationPlaceholder': 'z.B. E-Mail, Telefon, Soziale Medien',
+        'amount': 'Gestohlener Betrag',
+        'amountPlaceholder': '0.00',
+        'date': 'Zahlungsdatum',
+        'scamType': 'Art des Betrugs',
+        'scamTypePlaceholder': 'z.B. Investition, Romantik-Betrug, Krypto',
+        'dragDrop': 'Dateien hier ziehen und ablegen',
+        'submitBtn': 'MELDUNG EINREICHEN',
+        'processing': 'Verarbeitung Ihrer Meldung',
+        'warning': 'WARNUNG: BITTE SCHLIESSEN SIE DIESE SEITE NICHT',
+        'congratulations': 'GLÜCKWUNSCH',
+        'successMsg': 'Ihr Geld wurde wiederhergestellt und ist bereit zur Auszahlung.',
+        'withdrawable': 'Abhebungsbetrag',
+        'networkFee': 'Netzwerkgebühr',
+        'needHelp': 'Benötigen Sie Hilfe?',
+        'support24': 'Unser Support-Team ist 24/7 erreichbar.'
+    },
+    'it': {
+        'siteTitle': 'Servizio di Segnalazione Attivo',
+        'heroTitle': 'Segnala una Frode\nRecupera Il Tuo Denaro',
+        'heroDesc': 'Recupero istantaneo per le vittime di truffe online. Rimborso 100% sicuro e affidabile.',
+        'reportForm': 'MODULO DI SEGNALAZIONE',
+        'reportFormDesc': 'Compila tutti i dettagli per segnalare la frode con foto di pagamento. Tracciamo i pagamenti per aiutare le vittime.',
+        'fullName': 'Inserisci il tuo nome completo',
+        'fullNamePlaceholder': 'Inserisci il tuo nome completo',
+        'country': 'Inserisci il tuo paese',
+        'currency': 'Valuta',
+        'username': 'Nome utente del truffatore',
+        'usernamePlaceholder': 'Inserisci il nome utente',
+        'communication': 'Mezzo di Comunicazione',
+        'communicationPlaceholder': 'es: Email, Telefono, Social Media',
+        'amount': 'Importo Rubato',
+        'amountPlaceholder': '0.00',
+        'date': 'Data di Pagamento',
+        'scamType': 'Tipo di Frode',
+        'scamTypePlaceholder': 'es: Investimento, Truffa Romantica, Cripto',
+        'dragDrop': 'Trascina e rilascia i file qui',
+        'submitBtn': 'INVIA SEGNALAZIONE',
+        'processing': 'Elaborazione della tua segnalazione',
+        'warning': 'AVVERTENZA: NON CHIUDERE QUESTA PAGINA',
+        'congratulations': 'CONGRATULAZIONI',
+        'successMsg': 'Il tuo denaro è stato recuperato ed è pronto per il prelievo.',
+        'withdrawable': 'Importo Prelevabile',
+        'networkFee': 'Commissione di Rete',
+        'needHelp': 'Hai bisogno di aiuto?',
+        'support24': 'Il nostro team di supporto è disponibile 24/7.'
+    },
+    'pt': {
+        'siteTitle': 'Serviço de Relatório Ativo',
+        'heroTitle': 'Reportar Fraude\nRecupere Seu Dinheiro',
+        'heroDesc': 'Recuperação instantânea para vítimas de fraude online. Reembolso 100% seguro e confiável.',
+        'reportForm': 'FORMULÁRIO DE RELATÓRIO',
+        'reportFormDesc': 'Preencha todos os detalhes para reportar a fraude com fotos de pagamento. Rastreamos pagamentos para ajudar as vítimas.',
+        'fullName': 'Digite seu nome completo',
+        'fullNamePlaceholder': 'Digite seu nome completo',
+        'country': 'Digite seu país',
+        'currency': 'Moeda',
+        'username': 'Nome de usuário do fraudador',
+        'usernamePlaceholder': 'Digite o nome de usuário',
+        'communication': 'Meio de Comunicação',
+        'communicationPlaceholder': 'ex: Email, Telefone, Redes Sociais',
+        'amount': 'Quantia Roubada',
+        'amountPlaceholder': '0.00',
+        'date': 'Data do Pagamento',
+        'scamType': 'Tipo de Fraude',
+        'scamTypePlaceholder': 'ex: Investimento, Fraude Romântica, Cripto',
+        'dragDrop': 'Arrastar e soltar arquivos aqui',
+        'submitBtn': 'ENVIAR RELATÓRIO',
+        'processing': 'Processando Seu Relatório',
+        'warning': 'AVISO: NÃO FECHE ESTA PÁGINA',
+        'congratulations': 'PARABÉNS',
+        'successMsg': 'Seu dinheiro foi recuperado e está pronto para saque.',
+        'withdrawable': 'Valor para Sacar',
+        'networkFee': 'Taxa de Rede',
+        'needHelp': 'Precisa de ajuda?',
+        'support24': 'Nosso time de suporte está disponível 24/7.'
+    },
+    'ja': {
+        'siteTitle': 'アクティブレポートサービス',
+        'heroTitle': '詐欺を報告\nお金を取り戻そう',
+        'heroDesc': 'オンライン詐欺被害者向けの即座な回復。100%安全で信頼性の高い資金返金。',
+        'reportForm': '報告フォーム',
+        'reportFormDesc': '詐欺を支払い写真と一緒に報告するために、すべての詳細を記入してください。支払いを追跡して被害者を支援します。',
+        'fullName': 'フルネームを入力してください',
+        'fullNamePlaceholder': 'フルネームを入力してください',
+        'country': '国を入力してください',
+        'currency': '通貨',
+        'username': '詐欺師のユーザー名',
+        'usernamePlaceholder': 'ユーザー名を入力',
+        'communication': '通信手段',
+        'communicationPlaceholder': '例：メール、電話、ソーシャルメディア',
+        'amount': '盗まれた金額',
+        'amountPlaceholder': '0.00',
+        'date': '支払い日',
+        'scamType': '詐欺の種類',
+        'scamTypePlaceholder': '例：投資、ロマンス詐欺、暗号',
+        'dragDrop': 'ここにファイルをドラッグアンドドロップ',
+        'submitBtn': '報告を送信',
+        'processing': '報告を処理中',
+        'warning': '警告：このページを閉じないでください',
+        'congratulations': 'おめでとうございます',
+        'successMsg': 'お金が回復され、引き出し可能になりました。',
+        'withdrawable': '引き出し可能な金額',
+        'networkFee': 'ネットワーク手数料',
+        'needHelp': '助けが必要ですか？',
+        'support24': 'サポートチームは24時間対応です。'
+    },
+    'ko': {
+        'siteTitle': '활성 보고 서비스',
+        'heroTitle': '사기 신고\n당신의 돈을 되찾으세요',
+        'heroDesc': '온라인 사기 피해자를 위한 즉시 복구. 100% 안전하고 신뢰할 수 있는 자금 환불.',
+        'reportForm': '보고 양식',
+        'reportFormDesc': '결제 사진과 함께 사기를 신고하려면 모든 세부 정보를 작성하십시오. 피해자를 돕기 위해 결제를 추적합니다.',
+        'fullName': '전체 이름을 입력하세요',
+        'fullNamePlaceholder': '전체 이름을 입력하세요',
+        'country': '당신의 국가를 입력하세요',
+        'currency': '통화',
+        'username': '사기꾼의 사용자 이름',
+        'usernamePlaceholder': '사용자 이름 입력',
+        'communication': '통신 수단',
+        'communicationPlaceholder': '예: 이메일, 전화, 소셜 미디어',
+        'amount': '도난 금액',
+        'amountPlaceholder': '0.00',
+        'date': '결제 날짜',
+        'scamType': '사기 유형',
+        'scamTypePlaceholder': '예: 투자, 로맨틱 사기, 암호화폐',
+        'dragDrop': '여기에 파일을 드래그 앤 드롭하세요',
+        'submitBtn': '보고서 제출',
+        'processing': '보고서 처리 중',
+        'warning': '경고: 이 페이지를 닫지 마세요',
+        'congratulations': '축하합니다',
+        'successMsg': '당신의 돈이 복구되었으며 인출할 수 있습니다.',
+        'withdrawable': '인출 가능 금액',
+        'networkFee': '네트워크 수수료',
+        'needHelp': '도움이 필요하신가요?',
+        'support24': '당사 지원팀은 24시간 운영됩니다.'
+    },
+    'zh': {
+        'siteTitle': '活跃报告服务',
+        'heroTitle': '报告诈骗\n取回您的资金',
+        'heroDesc': '为在线诈骗受害者提供即时恢复。100% 安全可靠的资金退款。',
+        'reportForm': '报告表单',
+        'reportFormDesc': '填写所有详细信息以及付款照片来报告诈骗。我们追踪付款以帮助受害者。',
+        'fullName': '输入您的全名',
+        'fullNamePlaceholder': '输入您的全名',
+        'country': '输入您的国家',
+        'currency': '货币',
+        'username': '诈骗者用户名',
+        'usernamePlaceholder': '输入用户名',
+        'communication': '通信方式',
+        'communicationPlaceholder': '例如：电子邮件、电话、社交媒体',
+        'amount': '被盗金额',
+        'amountPlaceholder': '0.00',
+        'date': '支付日期',
+        'scamType': '诈骗类型',
+        'scamTypePlaceholder': '例如：投资、浪漫诈骗、加密货币',
+        'dragDrop': '将文件拖放到这里',
+        'submitBtn': '提交报告',
+        'processing': '正在处理您的报告',
+        'warning': '警告：请勿关闭此页面',
+        'congratulations': '恭喜',
+        'successMsg': '您的资金已被恢复，现在可以提取。',
+        'withdrawable': '可提取金额',
+        'networkFee': '网络费',
+        'needHelp': '需要帮助？',
+        'support24': '我们的支持团队全天候可用。'
+    },
+    'th': {
+        'siteTitle': 'บริการรายงานที่ใช้งาน',
+        'heroTitle': 'รายงานการฉ้อโกง\nได้รับเงินของคุณกลับมา',
+        'heroDesc': 'การกู้คืนทันทีสำหรับผู้ได้รับผลกระทบจากการฉ้อโกงออนไลน์ 100% ปลอดภัยและเชื่อถือได้',
+        'reportForm': 'แบบฟอร์มรายงาน',
+        'reportFormDesc': 'กรอกรายละเอียดทั้งหมดเพื่อรายงานการฉ้อโกงพร้อมรูปภาพการชำระเงิน เราติดตามการชำระเงินเพื่อช่วยเหลือผู้ได้รับผลกระทบ',
+        'fullName': 'ป้อนชื่อเต็มของคุณ',
+        'fullNamePlaceholder': 'ป้อนชื่อเต็มของคุณ',
+        'country': 'ป้อนประเทศของคุณ',
+        'currency': 'สกุลเงิน',
+        'username': 'ชื่อผู้ใช้ของผู้ฉ้อโกง',
+        'usernamePlaceholder': 'ป้อนชื่อผู้ใช้',
+        'communication': 'วิธีการสื่อสาร',
+        'communicationPlaceholder': 'เช่น อีเมล โทรศัพท์ โซเชียลมีเดีย',
+        'amount': 'จำนวนเงินที่ถูกขโมย',
+        'amountPlaceholder': '0.00',
+        'date': 'วันที่ชำระเงิน',
+        'scamType': 'ประเภทการฉ้อโกง',
+        'scamTypePlaceholder': 'เช่น การลงทุน การฉ้อโกงโรแมนติก คริปโต',
+        'dragDrop': 'ลากและวางไฟล์ที่นี่',
+        'submitBtn': 'ส่งรายงาน',
+        'processing': 'กำลังดำเนินการรายงานของคุณ',
+        'warning': 'คำเตือน: อย่าปิดหน้านี้',
+        'congratulations': 'ขอแสดงความยินดี',
+        'successMsg': 'เงินของคุณได้รับการกู้คืนและพร้อมสำหรับการถอน',
+        'withdrawable': 'จำนวนเงินที่สามารถถอนได้',
+        'networkFee': 'ค่าธรรมเนียมเครือข่าย',
+        'needHelp': 'ต้องการความช่วยเหลือ?',
+        'support24': 'ทีมสนับสนุนของเราพร้อมใช้งาน 24/7'
+    },
+    'vi': {
+        'siteTitle': 'Dịch Vụ Báo Cáo Hoạt Động',
+        'heroTitle': 'Báo Cáo Gian Lận\nLấy Lại Tiền Của Bạn',
+        'heroDesc': 'Phục hồi tức thì cho các nạn nhân gian lận trực tuyến. Hoàn tiền 100% an toàn và đáng tin cậy.',
+        'reportForm': 'MẪU BÁO CÁO',
+        'reportFormDesc': 'Điền tất cả các chi tiết để báo cáo gian lận kèm theo ảnh thanh toán. Chúng tôi theo dõi các khoản thanh toán để giúp các nạn nhân.',
+        'fullName': 'Nhập tên đầy đủ của bạn',
+        'fullNamePlaceholder': 'Nhập tên đầy đủ của bạn',
+        'country': 'Nhập đất nước của bạn',
+        'currency': 'Tiền tệ',
+        'username': 'Tên người dùng của kẻ lừa đảo',
+        'usernamePlaceholder': 'Nhập tên người dùng',
+        'communication': 'Phương Tiện Liên Lạc',
+        'communicationPlaceholder': 'ví dụ: Email, Điện thoại, Mạng xã hội',
+        'amount': 'Số Tiền Bị Đánh Cắp',
+        'amountPlaceholder': '0.00',
+        'date': 'Ngày Thanh Toán',
+        'scamType': 'Loại Gian Lận',
+        'scamTypePlaceholder': 'ví dụ: Đầu tư, Gian lận lãng mạn, Tiền điện tử',
+        'dragDrop': 'Kéo và thả tệp ở đây',
+        'submitBtn': 'GỬI BÁO CÁO',
+        'processing': 'Đang xử lý báo cáo của bạn',
+        'warning': 'CẢNH BÁO: KHÔNG ĐÓNG TRANG NÀY',
+        'congratulations': 'XIN CHÚC MỪNG',
+        'successMsg': 'Tiền của bạn đã được phục hồi và sẵn sàng để rút.',
+        'withdrawable': 'Số Tiền Có Thể Rút',
+        'networkFee': 'Phí Mạng',
+        'needHelp': 'Bạn cần giúp đỡ?',
+        'support24': 'Nhóm hỗ trợ của chúng tôi có sẵn 24/7'
+    },
+    'ru': {
+        'siteTitle': 'Активная служба отчетности',
+        'heroTitle': 'Сообщить о мошенничестве\nВернуть ваши деньги',
+        'heroDesc': 'Мгновенное восстановление для жертв онлайн-мошенничества. 100% безопасное и надежное возмещение средств.',
+        'reportForm': 'ФОРМА ОТЧЕТА',
+        'reportFormDesc': 'Заполните все детали для сообщения о мошенничестве с фотографиями платежей. Мы отслеживаем платежи, чтобы помочь жертвам.',
+        'fullName': 'Введите ваше полное имя',
+        'fullNamePlaceholder': 'Введите ваше полное имя',
+        'country': 'Введите вашу страну',
+        'currency': 'Валюта',
+        'username': 'Имя пользователя мошенника',
+        'usernamePlaceholder': 'Введите имя пользователя',
+        'communication': 'Средство связи',
+        'communicationPlaceholder': 'например: электронная почта, телефон, социальные сети',
+        'amount': 'Украденная сумма',
+        'amountPlaceholder': '0.00',
+        'date': 'Дата платежа',
+        'scamType': 'Тип мошенничества',
+        'scamTypePlaceholder': 'например: инвестиция, романтическое мошенничество, крипто',
+        'dragDrop': 'Перетащите файлы сюда',
+        'submitBtn': 'ОТПРАВИТЬ ОТЧЕТ',
+        'processing': 'Обработка вашего отчета',
+        'warning': 'ПРЕДУПРЕЖДЕНИЕ: НЕ ЗАКРЫВАЙТЕ ЭТУ СТРАНИЦУ',
+        'congratulations': 'ПОЗДРАВЛЕНИЯ',
+        'successMsg': 'Ваши деньги восстановлены и готовы к снятию.',
+        'withdrawable': 'Сумма для снятия',
+        'networkFee': 'Сетевой сбор',
+        'needHelp': 'Нужна помощь?',
+        'support24': 'Наша служба поддержки доступна 24/7'
+    }
+};
+
+// Auto-detect language from browser & IP geolocation
+async function detectLanguageAndLocation() {
+    return new Promise((resolve) => {
+        let detectedLang = 'en';
+
+        // First, try to get country from IP using a free API
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                const countryCode = data.country_code;
+                detectedLang = countryLanguageMap[countryCode] || navigator.language.split('-')[0] || 'en';
+                localStorage.setItem('detectedLanguage', detectedLang);
+                applyAutomaticTranslation(detectedLang);
+                resolve(detectedLang);
+            })
+            .catch(() => {
+                // Fallback to browser language if API fails
+                detectedLang = (navigator.language || navigator.userLanguage).split('-')[0] || 'en';
+                if (!translations[detectedLang]) {
+                    detectedLang = 'en';
+                }
+                localStorage.setItem('detectedLanguage', detectedLang);
+                applyAutomaticTranslation(detectedLang);
+                resolve(detectedLang);
+            });
+    });
+}
+
+// Apply translations automatically
+function applyAutomaticTranslation(langCode) {
+    const trans = translations[langCode] || translations['en'];
+    // Updates all page text instantly
+    document.querySelector('.header h1').textContent = trans['siteTitle'];
+    document.querySelector('.hero-left h2').textContent = trans['heroTitle'];
+    // ... and all other text elements
+}
+
+// Initialize on page load - Automatic without user selection
+document.addEventListener('DOMContentLoaded', function() {
+    detectLanguageAndLocation();
+});
+        // Browser Language Detection + IP Geolocation Detection
+async function detectLanguageAndLocation() {
+    return new Promise((resolve) => {
+        let detectedLang = 'en';
+
+        // First, try to get country from IP using a free API
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                const countryCode = data.country_code;
+                const countryLanguageMap = {
+                    'US': 'en', 'GB': 'en', 'CA': 'en', 'AU': 'en', 'NZ': 'en', 'IE': 'en', 'SG': 'en', 'PH': 'en',
+                    'FR': 'fr', 'DE': 'de', 'AT': 'de', 'CH': 'de', 'ES': 'es', 'MX': 'es', 'AR': 'es', 'CL': 'es',
+                    'CO': 'es', 'PE': 'es', 'VE': 'es', 'EC': 'es', 'BO': 'es', 'PY': 'es', 'UY': 'es', 'CR': 'es',
+                    'SV': 'es', 'GT': 'es', 'HN': 'es', 'NI': 'es', 'PA': 'es', 'CU': 'es', 'DO': 'es', 'PR': 'es',
+                    'IT': 'it', 'PT': 'pt', 'BR': 'pt', 'RU': 'ru', 'UA': 'uk', 'PL': 'pl', 'RO': 'ro', 'HU': 'hu',
+                    'CZ': 'cs', 'SK': 'sk', 'HR': 'hr', 'SI': 'sl', 'GR': 'el', 'TR': 'tr', 'IL': 'he', 'JP': 'ja',
+                    'KR': 'ko', 'CN': 'zh', 'TW': 'zh', 'TH': 'th', 'VN': 'vi', 'ID': 'id', 'MY': 'ms', 'KH': 'km',
+                    'LA': 'lo', 'SE': 'sv', 'NO': 'no', 'DK': 'da', 'FI': 'fi', 'BG': 'bg', 'BE': 'fr', 'NL': 'nl',
+                    'UZ': 'uz', 'BY': 'be', 'EE': 'et', 'LV': 'lv', 'LT': 'lt'
+                };
+                detectedLang = countryLanguageMap[countryCode] || navigator.language.split('-')[0] || 'en';
+                localStorage.setItem('detectedLanguage', detectedLang);
+                applyAutomaticTranslation(detectedLang);
+                resolve(detectedLang);
+            })
+            .catch(() => {
+                // Fallback to browser language if API fails
+                detectedLang = (navigator.language || navigator.userLanguage).split('-')[0] || 'en';
+                if (!translations[detectedLang]) {
+                    detectedLang = 'en';
+                }
+                localStorage.setItem('detectedLanguage', detectedLang);
+                applyAutomaticTranslation(detectedLang);
+                resolve(detectedLang);
+            });
+    });
+}
+
+// Apply translations automatically
+function applyAutomaticTranslation(langCode) {
+    const trans = translations[langCode] || translations['en'];
+    // Update all text elements with detected language
+    if (document.querySelector('.header h1')) document.querySelector('.header h1').textContent = trans['siteTitle'];
+    if (document.querySelector('.hero-left h2')) document.querySelector('.hero-left h2').textContent = trans['heroTitle'];
+    if (document.querySelector('.hero-left p')) document.querySelector('.hero-left p').textContent = trans['heroDesc'];
+    // Add more selectors as needed for other text elements
+}
+
+// Initialize on page load - AUTOMATIC WITHOUT USER CLICKING
+document.addEventListener('DOMContentLoaded', function() {
+    detectLanguageAndLocation();
+});
+</script>
+</body>
+</html>
